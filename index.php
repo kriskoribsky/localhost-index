@@ -1,14 +1,54 @@
 <?php
 
+    class Helper {
+
+
+
+        public static function debugVar(mixed $var, bool $exit = false): void {
+            echo '<hr><pre style="color: red;">';
+
+            switch (gettype($var)) {
+                case "array":
+                case "object":
+                    print_r($var);
+                    break;
+                default:
+                    var_dump($var);
+            }
+
+            if ($exit) {
+                $backtrace = debug_backtrace();
+                
+                echo '<br><em>Exit called from:</em><br>';
+
+                // loop through & output all stack frames in backtrace
+                for ($i = 0; $i < count($backtrace); $i++) {
+                    $trace = $backtrace[$i];
+
+                    // output string formatting
+                    echo ($i + 1) . '.) ' . $trace['file'] . ' (line ' . $trace['line'] . ') ';
+                    echo (array_key_exists('class', $trace)) ? $trace['class'] . ' -> ' : '';
+                    echo (array_key_exists('function', $trace)) ? $trace['function'] . '(' : '';
+                    echo (array_key_exists('args', $trace)) ? implode(", ", $trace['args']) . ')' : ')';  
+                }
+                exit('<br><strong>Execution explicitly terminated in <em>' . __METHOD__ . '</em></strong>');
+            }
+
+            echo '</pre>';
+
+        }
+    }
+
+
     $dir = getcwd();
     $files = scandir($dir);
 
     // remove '.' -> current dir & '..' parent dir entries
     $files = array_diff($files, ['.', '..']);
 
-    echo '<pre>';
-    print_r($files);
-    echo '</pre>';
+    // echo '<pre>';
+    // print_r($files);
+    // echo '</pre>';
 
     class File {
         public string $name;
@@ -21,6 +61,7 @@
         }
     }
 
+    exit("Exited on 'exit' statement in code.");
 
 
 ?>
@@ -83,7 +124,7 @@
 
                 <?php foreach($files as $file): ?>
                     <tr>
-                        <td><?php echo $file; ?></td>
+                        <td><a href="<?php echo $file; ?>"><?php echo $file; ?></a></td>
                     </tr>
                 <?php endforeach; ?>
 
