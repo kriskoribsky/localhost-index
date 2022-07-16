@@ -5,7 +5,11 @@
 
 
         public static function debugVar(mixed $var, bool $exit = false): void {
-            echo '<hr><pre style="color: red;">';
+            
+            echo    '<br>
+                    <fieldset style="border: 2px groove red; padding: 0 2rem">
+                    <legend style="color: red; font-weight: bold">Debug</legend>
+                    <pre style="text-align:left">';
 
             switch (gettype($var)) {
                 case "array":
@@ -17,38 +21,15 @@
             }
 
             if ($exit) {
-                $backtrace = debug_backtrace();
-                
-                echo '<br><em>Exit called from:</em><br>';
+                echo "<br><u>Exit called from:</u><br>\t";
 
-                // loop through & output all stack frames in backtrace
-                for ($i = 0; $i < count($backtrace); $i++) {
-                    $trace = $backtrace[$i];
+                debug_print_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS);
 
-                    // output string formatting
-                    echo ($i + 1) . '.) ' . $trace['file'] . ' (line ' . $trace['line'] . ') ';
-                    echo (array_key_exists('class', $trace)) ? $trace['class'] . ' -> ' : '';
-                    echo (array_key_exists('function', $trace)) ? $trace['function'] . '(' : '';
-                    echo (array_key_exists('args', $trace)) ? implode(", ", $trace['args']) . ')' : ')';  
-                }
-                exit('<br><strong>Execution explicitly terminated in <em>' . __METHOD__ . '</em></strong>');
+                exit('<br><strong>Execution explicitly terminated using <em>' . __METHOD__ . ' </em>method.</strong>');
             }
-
-            echo '</pre>';
-
+            echo '</pre></fieldset>';
         }
     }
-
-
-    $dir = getcwd();
-    $files = scandir($dir);
-
-    // remove '.' -> current dir & '..' parent dir entries
-    $files = array_diff($files, ['.', '..']);
-
-    // echo '<pre>';
-    // print_r($files);
-    // echo '</pre>';
 
     class File {
         public string $name;
@@ -56,12 +37,36 @@
         public int $size;
         public $icon;
 
-        public function __construct() {
+        
+
+        public function __construct($fileName) {
+            $this->name = $fileName;
+
 
         }
+
+
+        
+        private function getEditDate() {
+
+        }
+
+        private function getSize() {
+
+        }
+
+
+
     }
 
-    exit("Exited on 'exit' statement in code.");
+
+
+    $dir = getcwd();
+    $files = scandir($dir);
+
+    // remove '.' -> current dir & '..' parent dir entries
+    $files = array_values(array_diff($files, ['.', '..']));
+
 
 
 ?>
@@ -71,7 +76,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Server Index Page</title>
+    <title>Index Page</title>
 
     <meta name="description" content="Simple index page replacing default server's indexing.">
 
@@ -89,12 +94,15 @@
         }
 
         body {
-            font-family: Verdana, Arial, sans-serif;
+            font-family: "Century Schoolbook", Verdana, Arial, sans-serif;
+
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: auto;
         }
 
         .window {
             max-width: 1280px;
-            border: 1px solid green;
+            text-align: center;
         }
         
         .container {
@@ -114,19 +122,34 @@
 </head>
 <body>
 
-    <div class="window container">
+    <div class="container window">
 
-        <header></header>
+        <header>
+            <h1>Projects index page</h1>
+
+            <br>
+
+            <p>
+                <code>
+                    <?php echo __DIR__; ?>
+                </code>
+            </p>
+
+        </header>
     
         <main>
 
-            <table class="files">
+            <table class="container files">
 
-                <?php foreach($files as $file): ?>
-                    <tr>
-                        <td><a href="<?php echo $file; ?>"><?php echo $file; ?></a></td>
-                    </tr>
-                <?php endforeach; ?>
+                <tbody>
+
+                    <?php foreach($files as $file): ?>
+                        <tr>
+                            <td><a href="<?php echo $file; ?>"><?php echo $file; ?></a></td>
+                        </tr>
+                    <?php endforeach; ?>
+
+                </tbody>
 
 
             </table>
