@@ -1,20 +1,26 @@
 <?php
 
+    define('ICONS', [
+        'default_file' => '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><title>default_file</title><path d="M20.414,2H5V30H27V8.586ZM7,28V4H19v6h6V28Z" style="fill:#c5c5c5"/></svg>',
+        'default_folder' => '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><title>default_folder</title><path d="M27.5,5.5H18.2L16.1,9.7H4.4V26.5H29.6V5.5Zm0,4.2H19.3l1.1-2.1h7.1Z" style="fill:#c09553"/></svg>'
+    ]);
+
     class Helper {
 
-
-
-        public static function debugVar(mixed $var, bool $exit = false): void {
+        public static function debug_var(mixed $var, bool $exit = false): void {
             
             echo    '<br>
                     <fieldset style="border: 2px groove red; padding: 0 2rem">
                     <legend style="color: red; font-weight: bold">Debug</legend>
-                    <pre style="text-align:left">';
+                    <pre style="text-align:left; font-size:12px">';
 
             switch (gettype($var)) {
-                case "array":
-                case "object":
-                    print_r($var);
+                case 'array':
+                case 'object':
+                    echo htmlentities(print_r($var, true));
+                    break;
+                case 'string':
+                    echo 'string(' . strlen($var) . ') "' . htmlentities($var) . '"';
                     break;
                 default:
                     var_dump($var);
@@ -35,39 +41,109 @@
         public string $name;
         public string $date_edited;
         public int $size;
-        public $icon;
+        public string $icon;
+
+        // CONFIG
+        // include sizes for directories (increased overhead)
+        private static bool $dir_sizes = false;
 
         
 
-        public function __construct($fileName) {
-            $this->name = $fileName;
+        public function __construct(string $file_name) {
+            $this->name = $file_name;
 
-
-        }
-
-
-        
-        private function getEditDate() {
+            $this->date_edited = $this->get_edit_date($file_name);
+            $this->size = $this->get_size($file_name, self::$dir_sizes);
+            $this->icon = $this->get_icon($file_name);
 
         }
 
-        private function getSize() {
-
+        public function format_bytes(int $bytes): string {
+            return 'pass';
         }
 
+        private function get_edit_date(string $file_name): string {
+            // day-month-year hours:minutes
+            $time_format = 'd-m-Y G:i';
 
+            return date($time_format, filemtime($file_name));
+        }
 
+        private function get_size(string $file_name, bool $dir_sizes): int {
+
+            // $file_name = rtrim((str_replace('\\', '/', $file_name)), '/');
+            $file_name = realpath($file_name);
+
+            // OS specific checks (faster) || recursive directory traverse (slower)
+            if ($dir_sizes && is_dir($file_name)) {
+                $os = strtolower(substr(PHP_OS, 0, 3));
+
+                // Windows Host (WIN32, WINNT, Windows)
+                if ($os === 'win' && extension_loaded('com_dotnet')) {
+                    $obj = new COM('scripting.filesystemobject');
+
+                    if (is_object($obj)) {
+                        $ref = $obj->getfolder($file_name);
+                        $size = $ref->size;
+                        $obj = null;
+                        return $size;
+                    }
+                }
+                // Unix Host (Linux, Mac OS)
+                if ($os !== 'win') {
+                    $io = popen('/usr/bin/du -sb ' . $file_name, 'r');
+
+                    if ($io) {
+                        $size = intval(fgets($io, 80));
+                        pclose($io);
+                        return $size;
+                    }
+                }
+                // if system calls did't work, use slower recursive directory traverse method
+                $size = 0;
+                $files = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($file_name, FilesystemIterator::SKIP_DOTS));
+
+                foreach ($files as $file) {
+                    $size += $file->getSize();
+                }
+                return $size;
+
+            } else {
+                return filesize($file_name);
+            }
+        }
+
+        private function get_icon(string $file_name): string {
+          
+            $ext = pathinfo($file_name, PATHINFO_EXTENSION);
+
+            // folder
+            if ($ext === '') {
+                $folder_name = pathinfo($file_name, PATHINFO_FILENAME);
+                $q = 'folder_type_' . $folder_name;
+                return (array_key_exists($q, ICONS)) ? $q : ICONS['default_folder'];
+
+            // file
+            } else {
+                $q = 'file_type_' . $ext;
+                return (array_key_exists($q, ICONS)) ? $q : ICONS['default_file'];
+            }
+        }
     }
 
 
 
     $dir = getcwd();
-    $files = scandir($dir);
 
     // remove '.' -> current dir & '..' parent dir entries
-    $files = array_values(array_diff($files, ['.', '..']));
+    $file_names = array_values(array_diff(scandir($dir), ['.', '..']));
+    $files = [];
 
+    foreach ($file_names as $name) {
+        $files[] = new File($name);
+    }
 
+    Helper::debug_var($files, false, true);
 
 ?>
 
@@ -108,11 +184,6 @@
         .container {
             margin: 0 auto;
         }
-
-
-
-
-
     </style>
 
 
@@ -145,7 +216,7 @@
 
                     <?php foreach($files as $file): ?>
                         <tr>
-                            <td><a href="<?php echo $file; ?>"><?php echo $file; ?></a></td>
+                            <td><a href="<?php echo $file->name; ?>"><?php echo $file->name; ?></a></td>
                         </tr>
                     <?php endforeach; ?>
 
