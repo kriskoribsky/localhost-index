@@ -5,7 +5,8 @@ Single-file project. Designing custom XAMPP/Laragon/etc. ```index.php``` page to
 For local development, there are various web server stacks such as: XAMPP, MAMP, WampServer, Laragon, etc.<br>
 Web server _Apache / Nginx_ on each of them tries to laod an ```index.php / index.html```. If these files are not present,<br>
 **"index"** of installed server is loaded. (see [Visuals](#Visuals))<br><br>
-Icons used: [vscode-icons](https://github.com/vscode-icons/vscode-icons)
+Icons used: [vscode-icons](https://github.com/vscode-icons/vscode-icons)<br>
+File explorer ispired by Mac's [Finder](https://en.wikipedia.org/wiki/Finder_(software))
 
 # Visuals
 
