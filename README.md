@@ -24,3 +24,8 @@ Place ```index.php``` file inside your local development folder (such as ```Site
 
 Next time you open your ```http://localhost/``` there will display custom, formatted folders & files,<br>
 as well as brief information about your working directory.
+
+# To-do
+- [ ] Test File->get_size() method on ```Windows``` (with ```com_dotnet```) extension enabled
+- [ ] Test File->get_size() method on ```Linux```
+- [ ] Test File->get_size() method on ```Mac OS```
