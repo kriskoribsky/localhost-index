@@ -5,6 +5,27 @@
         'default_folder' => '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><title>default_folder</title><path d="M27.5,5.5H18.2L16.1,9.7H4.4V26.5H29.6V5.5Zm0,4.2H19.3l1.1-2.1h7.1Z" style="fill:#c09553"/></svg>'
     ]);
 
+    define('QUOTES', [
+        // Warren Buffet
+        'Someone\'s sitting in the shade today because someone planted a tree a long time ago.' => 'Warren Buffett',
+        'If you aren\'t willing to own a stock for 10 years, don\'t even think about owning it for 10 minutes.' => 'Warren Buffett',
+        'The most important investment you can make is in yourself.' => 'Warren Buffett',
+        'I will tell you how to become rich. Close the doors. Be fearful when others are greedy. Be greedy when others are fearful.' => 'Warren Buffett',
+        'Never depend on a single income. Make an investment to create a second source.' => 'Warren Buffett',
+        'No matter how great the talent or efforts, some things just take time. You can\'t produce a baby in one month by getting nine women pregnant.' => 'Warren Buffett',
+        'Don\'t pass up something that\'s attractive today because you think you will find something better tomorrow.' => 'Warren Buffett',
+        // Other
+        'There is nothing impossible to him who will try.' => 'Alexander the Great',
+        'When you have a dream, you\'ve got to grab it and never let go.' => 'Carol Burnett',
+        'Be courageous. Challenge orthodoxy. Stand up for what you believe in. When you are in your rocking chair talking to your grandchildren many years from now, be sure you have a good story to tell.' => 'Amal Clooney',
+        'Success is not final, failure is not fatal: it is the courage to continue that counts.' => 'Winston Churchill',
+        'You are never too old to set another goal or to dream a new dream.' => 'Malala Yousafzai',
+        'Where your fear is, there is your task.' => 'Carl Jung',
+        'Everything you ever wanted is on the other side of fear.' => 'George Adair',
+
+
+    ]);
+
     class Helper {
 
         public static function debug_var(mixed $var, bool $exit = false): void {
@@ -45,7 +66,7 @@
 
         // CONFIG
         // include sizes for directories (increased overhead)
-        private static bool $dir_sizes = false;
+        private static bool $dir_sizes = true;
 
         
 
@@ -143,7 +164,7 @@
         $files[] = new File($name);
     }
 
-    Helper::debug_var($files, false, true);
+    // Helper::debug_var($files, false, true);
 
 ?>
 
@@ -212,15 +233,44 @@
 
             <table class="container files">
 
+                <thead>
+
+                    <tr>
+                        <!-- GET requests using href -->
+                        <th abbr="File names" title="Sort alphabetically"><a href="?">Name</a></th>
+                        <th abbr="Last file edit" title="Sort by time of edit"><a href="?">Last Modified</a></th>
+                        <th abbr="Size of file" title="Sort by file size"><a href="?">Size</a></th>
+                    </tr>
+
+                    <tr>
+                        <th colspan="3"><hr></th>
+                    </tr>
+
+                </thead>
+
                 <tbody>
 
                     <?php foreach($files as $file): ?>
                         <tr>
                             <td><a href="<?php echo $file->name; ?>"><?php echo $file->name; ?></a></td>
+                            <td><?php echo $file->date_edited; ?></td>
+                            <td><?php echo $file->size; ?></td>
                         </tr>
                     <?php endforeach; ?>
 
                 </tbody>
+
+                <tfoot>
+
+                    <tr>
+                        <th colspan="3"><hr></th>
+                    </tr>
+
+                    <tr>
+                        <th title="Open folder in explorer"><a href="">Open in explorer</a></th>
+                    </tr>
+
+                </tfoot>
 
 
             </table>
