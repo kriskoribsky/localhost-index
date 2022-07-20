@@ -14,18 +14,97 @@
         'Never depend on a single income. Make an investment to create a second source.' => 'Warren Buffett',
         'No matter how great the talent or efforts, some things just take time. You can\'t produce a baby in one month by getting nine women pregnant.' => 'Warren Buffett',
         'Don\'t pass up something that\'s attractive today because you think you will find something better tomorrow.' => 'Warren Buffett',
-        // Other
+        'You only have to do a few things right in your life so long as you don\'t do too many things wrong.' => 'Warren Buffett',
+
+        // Albert Einstein
+        'Imagination is everything. It is the preview of life\'s coming attractions.' => 'Albert Einstein',
+        'Creativity is seeing what others see and thinking what no one else ever thought.' => 'Albert Einstein',
+        'The true sign of intelligence is not knowledge, but imagination.' => 'Albert Einstein',
+        
+        // Busines
+        'Success is not final; failure is not fatal: it is the courage to continue that counts.' => 'Winston Churchill',
+        'Play by the rules, but be ferocious.' => 'Phil Knight',
+        'Business opportunities are like buses, there\'s always another one coming.' => 'Richard Branson',
+        'Every problem is a gift—without problems we would not grow.' => 'Anthony Robbins',
+        'Success usually comes to those who are too busy to be looking for it.' => 'Henry David Thoreau',
+        'There\'s no shortage of remarkable ideas, what\'s missing is the will to execute them.' => 'Seth Godin',
+        'I owe my success to having listened respectfully to the very best advice, and then going away and doing the exact opposite.' => 'G.K. Chesterton',
+        'I don\'t know the word \'quit.\' Either I never did, or I have abolished it.' => 'Susan Butcher',
+        'Far and away the best prize that life offers is the chance to work hard at work worth doing.' => 'Theodore Roosevelt',
+        'If you really look closely, most overnight successes took a long time.' => 'Steve Jobs',
+        'Almost everything worthwhile carries with it some sort of risk, whether it\'s starting a new business, whether it\'s leaving home, whether it\'s getting married, or whether it\'s flying into space.' => 'Chris Hadfield',
+        'Even if you are on the right track, you\'ll get run over if you just sit there.' => 'Will Rodgers',
+        'The real test is not whether you avoid this failure, because you won\'t. It\'s whether you let it harden or shame you into inaction, or whether you learn from it; whether you choose to persevere.' => 'Barack Obama',
+        'Forget past mistakes. Forget failures. Forget everything except what you\'re going to do now and do it.' => 'William Durant',
+        'Character cannot be developed in ease and quiet. Only through experience of trial and suffering can the soul be strengthened, ambition inspired and success achieved.' => 'Helen Keller',
+        'The first one gets the oyster, the second gets the shell.' => 'Andrew Carnegie',
+        'The way to get started is to quit talking and begin doing.' => 'Walt Disney',
+        'Whether you think you can or whether you think you can\'t, you\'re right!' => 'Henry Ford',
+        'There are no secrets to success. It is the result of preparation, hard work and learning from failure.' => 'Colin Powell',
+        'Success is not the key to happiness. Happiness is the key to success. If you love what you are doing, you will be successful.' => 'Albert Schweitzer',
+        'Success is often achieved by those who don\'t know that failure is inevitable.' => 'Coco Chanel',
+        'Many of life\'s failures are people who did not realize how close they were to success when they gave up.' => 'Thomas Edison',
+        'I feel that luck is preparation meeting opportunity.' => 'Oprah Winfrey',
+        'I never dreamed about success. I worked for it.' => 'Estée Lauder', 
+        'The only place where success comes before work is in the dictionary.' => 'Vidal Sassoon',
+        'The only way around is through.' => 'Robert Frost',
+        
+        // Creativity
+        'Art is the elimination of the unnecessary.' => 'Pablo Picasso',
+        'You use a glass mirror to see your face. You use works of art to see your soul.' => 'George Bernard Shaw',
+        'A creative life is an amplified life. It\'s a bigger life, a happier life, an expanded life, and a hell of a lot more interesting life' => 'Elizabeth Gilbert',
+        'Don\'t wait for inspiration. It comes while working.' => 'Henri Matisse',
+        'The worst enemy to creativity is self-doubt.' => 'Sylvia Plath',
+        'Creativity is inventing, experimenting, growing, taking risks, breaking rules, making mistakes, and having fun.' => 'Mary Lou Cook',
+        'It\'s no good being too easily swayed by people\'s opinions. You have to believe in yourself.' => 'Donatella Versace',
+        'There is no doubt that creativity is the most important human resource of all. Without creativity, there would be no progress, and we would be forever repeating the same patterns.' => 'Edward De Bono',
+        'Begin by learning to draw and paint like the old masters. After that, you can do as you like; everyone will respect you.' => 'Salvador Dali',
+        'You can\'t use up creativity. The more you use, the more you have.' => 'Maya Angelou',
+        'There is no innovation and creativity without failure.' => 'Brené Brown',
+        'The creative process is a process of surrender, not control.' => 'Bruce Lee',
+        'The creative adult is the child who survived.' => 'Ursula Le Guin',
+        'Great things are done by a series of small things brought together.' => 'Vincent Van Gogh',
+        'Make visible what, without you, might perhaps never have been seen.' => 'Oprah Winfrey',
+        'Simplicity is the ultimate sophistication.' => 'Leonardo Da Vinci',
+        'Draw the art you want to see, start the business you want to run, play the music you want to hear, write the books you want to read, build the products you want to use - do the work you want to see done.' => 'Austin Kleon',
+        'Creativity is just connecting things. When you ask creative people how they did something, they feel a little guilty because they didn\'t really do it, they just saw something. It seemed obvious to them after a while.' => 'Steve Jobs',
+        'Everything you can imagine is real.' => 'Pablo Picasso',
+        'Imagination is the beginning of creation. You imagine what you desire, you will what you imagine, and at last, you create what you will.' => 'George Bernard Shaw',
+        'Creativity is… seeing something that doesn\'t exist already. You need to find out how you can bring it into being and that way be a playmate with God.' => 'Michele Shea',
+        'Everyone who\'s ever taken a shower has had an idea. It\'s the person who gets out of the shower, dries off, and does something about it who makes a difference.' => 'Nolan Bushnell',
+        'Creativity can solve almost any problem. The creative act, the defeat of habit by originality, overcomes everything.' => 'George Lois',
+        'Invention, it must be humbly admitted, does not consist in creating out of void but out of chaos.' => 'Mary Shelley',
+        'True alchemy lies in this formula: \'Your memory and your senses are but the nourishment of your creative impulse.\'' => 'Arthur Rimbaud',
+        'Odd how the creative power at once brings the whole universe to order.' => 'Virginia Woolf',
+        
+        // Programming
+        'Any fool can write code that a computer can understand. Good programmers write code that humans can understand.' => 'Martin Fowler',
+        'First, solve the problem. Then, write the code.' => 'John Johnson',
+        'Experience is the name everyone gives to their mistakes.' => 'Oscar Wilde',
+        'In order to be irreplaceable, one must always be different.' => 'Coco Chanel',
+        'Java is to JavaScript what car is to Carpet.' => 'Chris Heilmann',
+        'Knowledge is power.' => 'Francis Bacon',
+        'Sometimes it pays to stay in bed on Monday, rather than spending the rest of the week debugging Monday\'s code.' => 'Dan Salomon', 
+        'Perfection is achieved not when there is nothing more to add, but rather when there is nothing more to take away.' => 'Antoine de Saint-Exupery',
+        'Ruby is rubbish! PHP is phpantastic!' => 'Nikita Popov',
+        'Code is like humor. When you have to explain it, it\'s bad.' => 'Cory House',
+        'Fix the cause, not the symptom.' => 'Steve Maguire',
+        'Optimism is an occupational hazard of programming: feedback is the treatment.' => 'Kent Beck',
+        'When to use iterative development? You should use iterative development only on projects that you want to succeed.' => 'Martin Fowler',
+        'Simplicity is the soul of efficiency.' => 'Austin Freeman',
+        'Before software can be reusable it first has to be usable.' => 'Ralph Johnson',
+        'Make it work, make it right, make it fast.' => 'Kent Beck',
+
+        // Others
         'There is nothing impossible to him who will try.' => 'Alexander the Great',
         'When you have a dream, you\'ve got to grab it and never let go.' => 'Carol Burnett',
         'Be courageous. Challenge orthodoxy. Stand up for what you believe in. When you are in your rocking chair talking to your grandchildren many years from now, be sure you have a good story to tell.' => 'Amal Clooney',
         'Success is not final, failure is not fatal: it is the courage to continue that counts.' => 'Winston Churchill',
         'You are never too old to set another goal or to dream a new dream.' => 'Malala Yousafzai',
         'Where your fear is, there is your task.' => 'Carl Jung',
-        'Everything you ever wanted is on the other side of fear.' => 'George Adair',
-
-
+        'Everything you ever wanted is on the other side of fear.' => 'George Adair'
     ]);
-
+    
     class Helper {
 
         public static function debug_var(mixed $var, bool $exit = false): void {
@@ -152,8 +231,25 @@
         }
     }
 
+    // GET & POST requests
+    switch ($_SERVER['REQUEST_METHOD']) {
+        case 'POST':
+
+            if ((bool) $_POST['open_root'] === true) {
+                exec('start ' . __DIR__);
+                header('Location: ' . $_SERVER['PHP_SELF']);
+                exit();
+            }
+
+            break;
+
+        case 'GET':
+            echo 'GET';
+            break;
+    }
 
 
+    // main
     $dir = getcwd();
 
     // remove '.' -> current dir & '..' parent dir entries
@@ -164,10 +260,14 @@
         $files[] = new File($name);
     }
 
-    // Helper::debug_var($files, false, true);
+    // get random quote
+    $random_quote = array_rand(QUOTES);
+
+
 
 ?>
 
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -198,16 +298,40 @@
         }
 
         .window {
-            max-width: 1280px;
+            max-width: 640px;
             text-align: center;
         }
         
         .container {
             margin: 0 auto;
         }
+
+        .files {
+            margin: 3em auto;
+        }
+
+        .files th {
+            text-align: left;
+        }
+
+        blockquote {
+            display: table;
+        }
+
+        .author {
+            text-align: right;
+        }
+
+        .quote::before, .quote::after {
+            content: '"';
+        }
+
+
+
+
     </style>
 
-
+    
 
 
 
@@ -231,7 +355,7 @@
     
         <main>
 
-            <table class="container files">
+            <table class="container files" width="100%">
 
                 <thead>
 
@@ -267,7 +391,14 @@
                     </tr>
 
                     <tr>
-                        <th title="Open folder in explorer"><a href="">Open in explorer</a></th>
+                        <th title="Open folder in explorer">
+                            <form name="open-explorer-form" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
+                                
+                                <input type="hidden" name="open_root" value="true">
+                                <a id="open-explorer" href="#">Open in explorer</a>
+                        
+                            </form>
+                        </th>
                     </tr>
 
                 </tfoot>
@@ -281,11 +412,65 @@
     
         <footer>
 
-            <div class="container quote"></div>
+            <blockquote class="container">
+                    <!-- <p class="quote">There is no doubt that creativity is the most important human resource of all. Without creativity, there would be no progress, and we would be forever repeating the same patterns.</p>
+                    <p class="author">Edward De Bono</p> -->
+                    <p class="quote"><?php echo $random_quote; ?></p>
+                    <p class="author"><?php echo QUOTES[$random_quote]; ?></p>
+
+                    <!-- <span class="quote"><?php echo $random_quote; ?></span>
+                    <span class="author"><?php echo QUOTES[$random_quote]; ?></span> -->
+
+                <!-- <span style="position:relative">
+
+                    <span class="quote"><?php echo $random_quote; ?></span>
+                    <br>
+                    <span class="author"><?php echo QUOTES[$random_quote]; ?></span>
+
+                </span> -->
+
+            </blockquote>
 
         </footer>
 
     </div>
 
+    <script>
+        // open in explorer post request
+        // document.getElementById('open-explorer').addEventListener('click', function(event) {
+            
+        //     event.preventDefault()
+
+        //     fetch(window.location.href, {
+        //         method: 'POST',
+        //         headers: {
+        //             'Content-Type': 'application/json',
+        //         },
+        //         body: JSON.stringify({ open_root: true })
+        //     })
+        //     .then(data => {
+        //         console.log('Fetch successful:', data)
+        //     })
+        //     .catch((error) => {
+        //         console.error('Error:', error)
+        //     })
+
+        // });
+
+        // open in explorer post request
+        document.getElementById('open-explorer').addEventListener('click', function(event) {
+            
+            event.preventDefault()
+
+            document.forms['open-explorer-form'].submit()
+        })
+        
+
+    </script>
+
 </body>
+
+
+
+
 </html>
