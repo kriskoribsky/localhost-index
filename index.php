@@ -333,12 +333,21 @@
             margin: 3em auto;
         }
 
+        .icons a {
+            text-decoration: none;
+        }
+
+        .icons svg {
+            max-width: 1em;
+            max-height: 1em;
+        }
+
         .files th {
             text-align: left;
         }
 
         tfoot {
-            font-size: 0.8em;
+            font-size: 0.8em;   
         }
 
         #open-explorer svg {
@@ -395,13 +404,14 @@
 
                     <tr>
                         <!-- GET requests using href -->
+                        <!-- <th></th> -->
                         <th abbr="File names" title="Sort alphabetically"><a href="?">Name</a></th>
                         <th abbr="Last file edit" title="Sort by time of edit"><a href="?">Last Modified</a></th>
                         <th class="text-right" abbr="Size of file" title="Sort by file size"><a href="?">Size</a></th>
                     </tr>
 
                     <tr>
-                        <th colspan="4"><hr></th>
+                        <th colspan="5"><hr></th>
                     </tr>
 
                 </thead>
@@ -410,7 +420,8 @@
 
                     <?php foreach($files as $file): ?>
                         <tr>
-                            <td><a href="<?php echo $file->name; ?>"><?php echo $file->name; ?></a></td>
+                            <!-- <td class="icons" colspan="1"><?php echo $file->icon; ?></td> -->
+                            <td class="icons"><a href="<?php echo $file->name; ?>"><?php echo $file->icon . ' ' . $file->name; ?></a></td>
                             <td><?php echo $file->date_edited; ?></td>
 
                             <?php $formatted_bytes = $file->format_bytes($file->size); ?>
@@ -425,11 +436,11 @@
                 <tfoot>
 
                     <tr>
-                        <th colspan="4"><hr></th>
+                        <th colspan="5"><hr></th>
                     </tr>
 
                     <tr>
-                        <td colspan="1">
+                        <td colspan="4">
                             <p><?php echo apache_get_version(); ?></p>
                             <p hidden><a href="#">View more</a></p>
                         </td>
