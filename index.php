@@ -254,7 +254,6 @@
             break;
 
         case 'GET':
-            echo 'GET';
             break;
     }
 
@@ -324,10 +323,27 @@
             text-align: center !important;
         }
 
+        .primary-text-clr {
+            color: var(--primary-text-clr);
+        }
+
+        .secondary-text-clr {
+            color: var(--secondary-text-clr);
+        }
+
         /* main styles */
+        :root {
+            --secondary-text-clr: #696969;
+            --primary-text-clr: #303030;
+
+            --tr-dark-shade-clr: #DCDCDC;
+            --tr-light-shade-clr: white;
+        }
+
+
+
         .window {
             max-width: 640px;
-            /* text-align: center; */
         }
         
         .files {
@@ -346,8 +362,12 @@
             top: 0.18em;
         }
 
-        .files th {
+        table th {
             text-align: left;
+        }
+
+        .files:nth-child(2n) {
+            background-color: var(--tr-dark-shade-clr);
         }
 
         tfoot {
@@ -389,7 +409,7 @@
 </head>
 <body>
 
-    <div class="container window text-center">
+    <div class="container window text-center secondary-text-clr">
 
         <header>
             <h1>Projects index page</h1>
@@ -406,7 +426,7 @@
     
         <main>
 
-            <table class="container files" width="100%">
+            <table class="container primary-text-clr" width="100%">
 
                 <thead>
 
@@ -427,10 +447,9 @@
                 <tbody>
 
                     <?php foreach($files as $file): ?>
-                        <tr>
-                            <!-- <td class="icons" colspan="1"><?php echo $file->icon; ?></td> -->
-                            <td class="icons"><a href="<?php echo $file->name; ?>"><?php echo $file->icon . ' ' . $file->name; ?></a></td>
-                            <td><?php echo $file->date_edited; ?></td>
+                        <tr class="files">
+                            <td class="icons text-left"><a href="<?php echo $file->name; ?>"><?php echo $file->icon . ' ' . $file->name; ?></a></td>
+                            <td class="text-left"><?php echo $file->date_edited; ?></td>
 
                             <?php $formatted_bytes = File::format_bytes($file->size); $folder_size += $file->size ?>
 
@@ -448,7 +467,7 @@
                     </tr>
 
                     <tr>
-                        <td colspan="2">
+                        <td class="text-left" colspan="2">
                             <?php echo apache_get_version(); ?>
                             <a hidden href="#">View more</a>
                         </td>
