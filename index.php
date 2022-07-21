@@ -341,6 +341,9 @@
         .icons svg {
             max-width: 1em;
             max-height: 1em;
+
+            position: relative;
+            top: 0.18em;
         }
 
         .files th {
