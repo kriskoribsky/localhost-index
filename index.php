@@ -281,7 +281,7 @@
         /* minified normalize.css */
         html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}main{display:block}h1{font-size:2em;margin:.67em 0}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace,monospace;font-size:1em}a{background-color:rgba(0,0,0,0)}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-0.25em}sup{top:-0.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}button,[type=button],[type=reset],[type=submit]{-webkit-appearance:button}button::-moz-focus-inner,[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner{border-style:none;padding:0}button:-moz-focusring,[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:.35em .75em .625em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{vertical-align:baseline}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details{display:block}summary{display:list-item}template{display:none}[hidden]{display:none}
 
-        /* main styles */
+        /* helper classes */
         html {
             box-sizing: border-box;
         }
@@ -297,15 +297,28 @@
             -moz-osx-font-smoothing: auto;
         }
 
-        .window {
-            max-width: 640px;
-            text-align: center;
-        }
-        
         .container {
             margin: 0 auto;
         }
+        
+        .text-left {
+            text-align: left;
+        }
 
+        .text-right {
+            text-align: right;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* main styles */
+        .window {
+            max-width: 640px;
+            /* text-align: center; */
+        }
+        
         .files {
             margin: 3em auto;
         }
@@ -314,12 +327,23 @@
             text-align: left;
         }
 
-        blockquote {
+        tfoot {
+            font-size: 0.8em;
+        }
+
+        #open-explorer svg {
+            max-width: 1.25em;
+            max-height: 1.25em;
+        }
+
+        blockquote.container {
+            font-family: Garamond, serif;
+            margin-top: 3em;
             display: table;
         }
 
         .author {
-            text-align: right;
+
         }
 
         .quote::before, .quote::after {
@@ -338,7 +362,7 @@
 </head>
 <body>
 
-    <div class="container window">
+    <div class="container window text-center">
 
         <header>
             <h1>Projects index page</h1>
@@ -391,43 +415,31 @@
                     </tr>
 
                     <tr>
-                        <th title="Open folder in explorer">
+                        <td colspan="1">
+                            <p><?php echo apache_get_version(); ?></p>
+                            <p hidden><a href="#">View more</a></p>
+                        </td>
+                        <td class="text-right" colspan="2" title="Open folder in explorer">
                             <form name="open-explorer-form" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
                                 
                                 <input type="hidden" name="open_root" value="true">
-                                <a id="open-explorer" href="#">Open in explorer</a>
+                                <a id="open-explorer" href="#">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="48" width="48" viewbox="0 0 48 48"><path d="M7 40q-1.15 0-2.075-.925Q4 38.15 4 37V11q0-1.15.925-2.075Q5.85 8 7 8h12.8q.6 0 1.175.25.575.25.975.65l2.1 2.1H41q1.15 0 2.075.925Q44 12.85 44 14H22.75l-3-3H7v26l4.5-17.75q.25-1 1.1-1.625.85-.625 1.85-.625H43.1q1.45 0 2.4 1.15t.55 2.6l-4.4 16.95q-.3 1.2-1.1 1.75T38.5 40Zm3.15-3h28.6l4.2-17h-28.6Zm0 0 4.2-17-4.2 17ZM7 17v-6 6Z"/></svg>
+                                </a>
                         
                             </form>
-                        </th>
+                        </td>
                     </tr>
-
                 </tfoot>
-
-
             </table>
-
-            <div class="system-info"></div>
-
         </main>
     
         <footer>
 
             <blockquote class="container">
-                    <!-- <p class="quote">There is no doubt that creativity is the most important human resource of all. Without creativity, there would be no progress, and we would be forever repeating the same patterns.</p>
-                    <p class="author">Edward De Bono</p> -->
+
                     <p class="quote"><?php echo $random_quote; ?></p>
-                    <p class="author"><?php echo QUOTES[$random_quote]; ?></p>
-
-                    <!-- <span class="quote"><?php echo $random_quote; ?></span>
-                    <span class="author"><?php echo QUOTES[$random_quote]; ?></span> -->
-
-                <!-- <span style="position:relative">
-
-                    <span class="quote"><?php echo $random_quote; ?></span>
-                    <br>
-                    <span class="author"><?php echo QUOTES[$random_quote]; ?></span>
-
-                </span> -->
+                    <p class="author text-right"><strong><?php echo QUOTES[$random_quote]; ?></strong></p>
 
             </blockquote>
 
