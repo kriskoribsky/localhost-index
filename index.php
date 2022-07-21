@@ -158,8 +158,18 @@
 
         }
 
-        public function format_bytes(int $bytes): string {
-            return 'pass';
+        public function format_bytes(int $bytes, bool $base_2 = false): array {
+            $prefixes = [
+                ['B', 'KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB'],
+                ['B', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
+            ];
+
+            $prefix = $base_2 ? $prefixes[0] : $prefixes[1]; 
+            $base = $base_2 ? 1024 : 1000;
+
+            $exponent = floor(log($bytes, $base));
+
+            return ['value' => round($bytes / pow($base, $exponent), 2), 'prefix' => $prefix[$exponent]];
         }
 
         private function get_edit_date(string $file_name): string {
@@ -302,15 +312,15 @@
         }
         
         .text-left {
-            text-align: left;
+            text-align: left !important;
         }
 
         .text-right {
-            text-align: right;
+            text-align: right !important;
         }
 
         .text-center {
-            text-align: center;
+            text-align: center !important;
         }
 
         /* main styles */
@@ -387,11 +397,11 @@
                         <!-- GET requests using href -->
                         <th abbr="File names" title="Sort alphabetically"><a href="?">Name</a></th>
                         <th abbr="Last file edit" title="Sort by time of edit"><a href="?">Last Modified</a></th>
-                        <th abbr="Size of file" title="Sort by file size"><a href="?">Size</a></th>
+                        <th class="text-right" abbr="Size of file" title="Sort by file size"><a href="?">Size</a></th>
                     </tr>
 
                     <tr>
-                        <th colspan="3"><hr></th>
+                        <th colspan="4"><hr></th>
                     </tr>
 
                 </thead>
@@ -402,7 +412,11 @@
                         <tr>
                             <td><a href="<?php echo $file->name; ?>"><?php echo $file->name; ?></a></td>
                             <td><?php echo $file->date_edited; ?></td>
-                            <td><?php echo $file->size; ?></td>
+
+                            <?php $formatted_bytes = $file->format_bytes($file->size); ?>
+
+                            <td class="text-right"><?php echo $formatted_bytes['value']; ?></td>
+                            <td class="text-right"><?php echo $formatted_bytes['prefix'] ?></td>
                         </tr>
                     <?php endforeach; ?>
 
@@ -411,7 +425,7 @@
                 <tfoot>
 
                     <tr>
-                        <th colspan="3"><hr></th>
+                        <th colspan="4"><hr></th>
                     </tr>
 
                     <tr>
@@ -419,7 +433,7 @@
                             <p><?php echo apache_get_version(); ?></p>
                             <p hidden><a href="#">View more</a></p>
                         </td>
-                        <td class="text-right" colspan="2" title="Open folder in explorer">
+                        <td class="text-right" colspan="3" title="Open folder in explorer">
                             <form name="open-explorer-form" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
                                 
                                 <input type="hidden" name="open_root" value="true">
