@@ -158,7 +158,7 @@
 
         }
 
-        public function format_bytes(int $bytes, bool $base_2 = false): array {
+        public static function format_bytes(int $bytes, bool $base_2 = false): array {
             $prefixes = [
                 ['B', 'KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB'],
                 ['B', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
@@ -273,7 +273,8 @@
     // get random quote
     $random_quote = array_rand(QUOTES);
 
-
+    // total size of current folder
+    $folder_size = 0;
 
 ?>
 
@@ -350,6 +351,10 @@
             font-size: 0.8em;   
         }
 
+        form {
+            margin: 0;
+        }
+
         #open-explorer svg {
             max-width: 1.25em;
             max-height: 1.25em;
@@ -424,10 +429,10 @@
                             <td class="icons"><a href="<?php echo $file->name; ?>"><?php echo $file->icon . ' ' . $file->name; ?></a></td>
                             <td><?php echo $file->date_edited; ?></td>
 
-                            <?php $formatted_bytes = $file->format_bytes($file->size); ?>
+                            <?php $formatted_bytes = File::format_bytes($file->size); $folder_size += $file->size ?>
 
                             <td class="text-right"><?php echo $formatted_bytes['value']; ?></td>
-                            <td class="text-right"><?php echo $formatted_bytes['prefix'] ?></td>
+                            <td class="text-right"><?php echo $formatted_bytes['prefix']; ?></td>
                         </tr>
                     <?php endforeach; ?>
 
@@ -440,11 +445,12 @@
                     </tr>
 
                     <tr>
-                        <td colspan="4">
-                            <p><?php echo apache_get_version(); ?></p>
-                            <p hidden><a href="#">View more</a></p>
+                        <td colspan="2">
+                            <?php echo apache_get_version(); ?>
+                            <a hidden href="#">View more</a>
                         </td>
-                        <td class="text-right" colspan="3" title="Open folder in explorer">
+                        <td class="text-right"><?php echo implode(' ', File::format_bytes($folder_size)); ?></td>
+                        <td class="text-right" title="Open folder in explorer">
                             <form name="open-explorer-form" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
                                 
                                 <input type="hidden" name="open_root" value="true">
@@ -454,6 +460,7 @@
                         
                             </form>
                         </td>
+                       
                     </tr>
                 </tfoot>
             </table>
