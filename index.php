@@ -139,7 +139,7 @@
 
     class File {
         public string $name;
-        public string $date_edited;
+        public int $timestamp;
         public int $size;
         public string $icon;
 
@@ -152,7 +152,7 @@
         public function __construct(string $file_name) {
             $this->name = $file_name;
 
-            $this->date_edited = $this->get_edit_date($file_name);
+            $this->timestamp = $this->get_timestamp($file_name);
             $this->size = $this->get_size($file_name, self::$dir_sizes);
             $this->icon = $this->get_icon($file_name);
 
@@ -172,11 +172,35 @@
             return ['value' => round($bytes / pow($base, $exponent), 2), 'prefix' => $prefix[$exponent]];
         }
 
-        private function get_edit_date(string $file_name): string {
+        public static function format_date(int $timestamp): string {
             // day-month-year hours:minutes
             $time_format = 'd-m-Y G:i';
 
-            return date($time_format, filemtime($file_name));
+            return date($time_format, $timestamp);
+        }
+
+        // used for built-in usort function
+        public static function sort_files(int|string $input1, int|string $input2, bool $ascending = true): bool {
+            $type1 = gettype($input1);
+            $type2 = gettype($input2);
+
+            assert($type1 === $type2, 'Sorting according to distinct data types.');
+
+            if ($type1 === 'integer') {
+                return $ascending ? $input1 - $input2 : $input2 - $input1;
+
+            } elseif ($type1 === 'string') {
+                return $ascending ? strcmp($input1, $input2) : strcmp($input2, $input1);
+
+            } else {
+                throw new TypeError('Sorting according to incorrect data types.');
+            }
+
+        }
+
+        private function get_timestamp(string $file_name): int {
+
+            return filemtime($file_name);
         }
 
         private function get_size(string $file_name, bool $dir_sizes): int {
@@ -240,24 +264,7 @@
             }
         }
     }
-
-    // GET & POST requests
-    switch ($_SERVER['REQUEST_METHOD']) {
-        case 'POST':
-
-            if ((bool) $_POST['open_root'] === true) {
-                exec('start ' . __DIR__);
-                header('Location: ' . $_SERVER['PHP_SELF']);
-                exit();
-            }
-
-            break;
-
-        case 'GET':
-            break;
-    }
-
-
+    
     // main
     $dir = getcwd();
 
@@ -275,6 +282,38 @@
     // total size of current folder
     $folder_size = 0;
 
+    // sorting (A -> ascending order / D -> descending order)
+    $sort = [
+        // names
+        'N' => 'A',
+        // date edited
+        'T' => 'A',
+        // size 
+        'S' => 'A',
+    ];
+
+    // GET & POST requests
+    switch ($_SERVER['REQUEST_METHOD']) {
+        case 'POST':
+
+            if ((bool) $_POST['open_root'] === true) {
+                exec('start ' . __DIR__);
+                header('Location: ' . $_SERVER['PHP_SELF']);
+                exit();
+            }
+
+            break;
+
+        case 'GET':
+
+            switch ($_GET['C']) {
+                case 'N':
+                    usort($files, File::sort_files())
+            }
+
+
+            break;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -400,8 +439,8 @@
         }
 
         #open-explorer svg {
-            max-width: 1.25em;
-            max-height: 1.25em;
+            max-width: 1.4em;
+            max-height: 1.4em;
         }
 
         blockquote.container {
@@ -445,9 +484,9 @@
                     <tr class="sort-rows">
                         <!-- GET requests using href -->
                         <!-- <th></th> -->
-                        <th abbr="File names" title="Sort alphabetically"><a href="?">Name</a></th>
-                        <th abbr="Last file edit" title="Sort by time of edit"><a href="?">Last Modified</a></th>
-                        <th class="text-right" abbr="Size of file" title="Sort by file size"><a href="?">Size</a></th>
+                        <th abbr="File names" title="Sort alphabetically"><a href="?C=N;">Name</a></th>
+                        <th abbr="Last file edit" title="Sort by time of edit"><a href="?C=T;">Last Modified</a></th>
+                        <th class="text-right" abbr="Size of file" title="Sort by file size"><a href="?C=S;">Size</a></th>
                     </tr>
 
                     <tr>
@@ -461,7 +500,7 @@
                     <?php foreach($files as $file): ?>
                         <tr class="file-rows">
                             <td class="files text-left"><a href="<?php echo $file->name; ?>"><?php echo $file->icon . ' ' . $file->name; ?></a></td>
-                            <td class="text-left"><?php echo $file->date_edited; ?></td>
+                            <td class="text-left"><?php echo File::format_date($file->timestamp); ?></td>
 
                             <?php $formatted_bytes = File::format_bytes($file->size); $folder_size += $file->size ?>
 
