@@ -323,51 +323,72 @@
             text-align: center !important;
         }
 
-        .primary-text-clr {
-            color: var(--primary-text-clr);
-        }
-
-        .secondary-text-clr {
-            color: var(--secondary-text-clr);
-        }
-
         /* main styles */
         :root {
-            --secondary-text-clr: #696969;
-            --primary-text-clr: #303030;
+            --primary-text-clr: #0C5959;
+            --secondary-text-clr: #2C6363;
+            --dark-grey-text-clr: #222222;
+            --light-grey-text-clr: #404040;
 
             --tr-dark-shade-clr: #DCDCDC;
-            --tr-light-shade-clr: white;
+            --tr-light-shade-clr: #F8F8F8;
         }
-
-
 
         .window {
             max-width: 640px;
+            color: var(--light-grey-text-clr);
+        }
+
+        .window h1 {
+            color: var(--primary-text-clr);
         }
         
-        .files {
-            margin: 3em auto;
+        .files a {
+            color: var(--secondary-text-clr);
         }
 
-        .icons a {
-            text-decoration: none;
+        .files a:hover {
+            opacity: 0.6;
         }
 
-        .icons svg {
-            max-width: 1em;
-            max-height: 1em;
+        .files svg {
+            max-width: 1.4em;
+            max-height: 1.4em;
 
             position: relative;
-            top: 0.18em;
+            top: 0.32em;
+        }
+
+        table {
+            color: var(--dark-grey-text-clr);
+            margin: 3em auto !important;
+            border-collapse: collapse;
+        }
+
+        table td {
+            padding: 0.2em;
         }
 
         table th {
             text-align: left;
         }
 
-        .files:nth-child(2n) {
-            background-color: var(--tr-dark-shade-clr);
+        table a {
+            text-decoration: none;
+        }
+
+        .sort-rows a {
+            color: var(--secondary-text-clr);
+        }
+
+        .file-rows:nth-child(2n+1) {
+            /* background-color: var(--tr-dark-shade-clr); */
+            background-color: var(--tr-light-shade-clr);
+        }
+
+        .file-rows:nth-child(2n) {
+            /* background-color: var(--tr-light-shade-clr); */
+            background-color: white;
         }
 
         tfoot {
@@ -389,29 +410,20 @@
             display: table;
         }
 
-        .author {
-
-        }
-
         .quote::before, .quote::after {
             content: '"';
         }
 
-
-
-
     </style>
 
-    
-
-
-
 </head>
+
 <body>
 
     <div class="container window text-center secondary-text-clr">
 
         <header>
+
             <h1>Projects index page</h1>
 
             <br>
@@ -430,7 +442,7 @@
 
                 <thead>
 
-                    <tr>
+                    <tr class="sort-rows">
                         <!-- GET requests using href -->
                         <!-- <th></th> -->
                         <th abbr="File names" title="Sort alphabetically"><a href="?">Name</a></th>
@@ -447,8 +459,8 @@
                 <tbody>
 
                     <?php foreach($files as $file): ?>
-                        <tr class="files">
-                            <td class="icons text-left"><a href="<?php echo $file->name; ?>"><?php echo $file->icon . ' ' . $file->name; ?></a></td>
+                        <tr class="file-rows">
+                            <td class="files text-left"><a href="<?php echo $file->name; ?>"><?php echo $file->icon . ' ' . $file->name; ?></a></td>
                             <td class="text-left"><?php echo $file->date_edited; ?></td>
 
                             <?php $formatted_bytes = File::format_bytes($file->size); $folder_size += $file->size ?>
@@ -493,7 +505,7 @@
             <blockquote class="container">
 
                     <p class="quote"><?php echo $random_quote; ?></p>
-                    <p class="author text-right"><strong><?php echo QUOTES[$random_quote]; ?></strong></p>
+                    <p class="text-right"><strong><?php echo QUOTES[$random_quote]; ?></strong></p>
 
             </blockquote>
 
@@ -503,40 +515,14 @@
 
     <script>
         // open in explorer post request
-        // document.getElementById('open-explorer').addEventListener('click', function(event) {
-            
-        //     event.preventDefault()
-
-        //     fetch(window.location.href, {
-        //         method: 'POST',
-        //         headers: {
-        //             'Content-Type': 'application/json',
-        //         },
-        //         body: JSON.stringify({ open_root: true })
-        //     })
-        //     .then(data => {
-        //         console.log('Fetch successful:', data)
-        //     })
-        //     .catch((error) => {
-        //         console.error('Error:', error)
-        //     })
-
-        // });
-
-        // open in explorer post request
         document.getElementById('open-explorer').addEventListener('click', function(event) {
             
             event.preventDefault()
 
             document.forms['open-explorer-form'].submit()
         })
-        
-
     </script>
 
 </body>
-
-
-
 
 </html>
