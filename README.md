@@ -1,22 +1,29 @@
 # **localhost-index**
-Single-file project. Designing custom XAMPP/Laragon/etc. ```index.php``` page to use for local development.
-
+Multi-file project. This project is **continuation** (& main branch) of an original single-file project. It mimics the behaviour<br>
+of Apache's ```autoindex``` module, which creates index of directory file listings. 
+ 
 # Description
-For local development, there are various web server stacks such as: XAMPP, MAMP, WampServer, Laragon, etc.<br>
-Web server _Apache / Nginx_ on each of them tries to laod an ```index.php / index.html```. If these files are not present,<br>
-**"index"** of installed server is loaded. (see [Visuals](#Visuals))<br><br>
+This project could be utilized by web developers developing in local environment (```localhost/```) to beautify default indexing.
+
+## Features
+- Eye-compelling minimalist design, good-looking on **mobile devices** too
+- Custom icons for all major file extensions (e.g. ```.js, .php, .css, .html```, ...)
+- Display of current ```system path``` & ```open in explorer``` button
+- Sorting files according to ```file-size```, ```name``` and ```edit date```
+- Quote viewer to motivate you
+
 Icons used: [vscode-icons](https://github.com/vscode-icons/vscode-icons)<br>
 File explorer ispired by Mac's [Finder](https://en.wikipedia.org/wiki/Finder_(software))
 
 # Visuals
 
 ## Default localhost index without [FancyIndexing:](https://docstore.mik.ua/orelly/linux/apache/ch07_01.htm)
-![localhost index, no FancyIndexing](img/default-index1.png)
+![localhost index, no FancyIndexing](docs/img/default-index1.png)
 
 <br>
 
 ## Default localhost index with [FancyIndexing:](https://docstore.mik.ua/orelly/linux/apache/ch07_01.htm)
-![localhost index with FancyIndexing](img/default-index2.png)
+![localhost index with FancyIndexing](docs/img/default-index2.png)
 
 # Setup
 Place ```index.php``` file inside your local development folder (such as ```Sites```).<br>
