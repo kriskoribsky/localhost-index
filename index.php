@@ -163,9 +163,14 @@
                 ['B', 'KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB'],
                 ['B', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
             ];
-
+            
             $prefix = $base_2 ? $prefixes[0] : $prefixes[1]; 
             $base = $base_2 ? 1024 : 1000;
+            
+            // handle division by 0 & logarithm of 0 cases 
+            if ($bytes === 0) {
+                return ['value' => 0, 'prefix' => $prefix[0]];
+            }
 
             $exponent = floor(log($bytes, $base));
 
@@ -180,14 +185,14 @@
         }
 
         // used for built-in usort function
-        public static function sort_files(int|string $input1, int|string $input2, bool $ascending = true): bool {
+        public static function sort_files(int|string $input1, int|string $input2, bool $ascending): int {
             $type1 = gettype($input1);
             $type2 = gettype($input2);
 
             assert($type1 === $type2, 'Sorting according to distinct data types.');
 
             if ($type1 === 'integer') {
-                return $ascending ? $input1 - $input2 : $input2 - $input1;
+                return $ascending ? $input1 <=> $input2 : $input2 <=> $input1;
 
             } elseif ($type1 === 'string') {
                 return $ascending ? strcmp($input1, $input2) : strcmp($input2, $input1);
@@ -282,19 +287,9 @@
     // total size of current folder
     $folder_size = 0;
 
-    // sorting (A -> ascending order / D -> descending order)
-    $sort = [
-        // names
-        'N' => 'A',
-        // date edited
-        'T' => 'A',
-        // size 
-        'S' => 'A',
-    ];
-
     // GET & POST requests
     switch ($_SERVER['REQUEST_METHOD']) {
-        case 'POST':
+        case 'POST' && isset($_POST['open_root']):
 
             if ((bool) $_POST['open_root'] === true) {
                 exec('start ' . __DIR__);
@@ -304,14 +299,22 @@
 
             break;
 
-        case 'GET':
+        case 'GET' && isset($_GET['C'], $_GET['O']):
 
             switch ($_GET['C']) {
                 case 'N':
-                    usort($files, File::sort_files())
+                    usort($files, fn(File $file1, File $file2): int => File::sort_files($file1->name, $file2->name,
+                        $_GET['O']==='A'));
+                    break;
+                case 'T':
+                    usort($files, fn(File $file1, File $file2): int => File::sort_files($file1->timestamp, $file2->timestamp,
+                        $_GET['O']==='A'));
+                    break;
+                case 'S':
+                    usort($files, fn(File $file1, File $file2): int => File::sort_files($file1->size, $file2->size,
+                        $_GET['O']==='A'));
+                    break;
             }
-
-
             break;
     }
 ?>
@@ -480,13 +483,20 @@
             <table class="container primary-text-clr" width="100%">
 
                 <thead>
-
+                    
                     <tr class="sort-rows">
-                        <!-- GET requests using href -->
-                        <!-- <th></th> -->
-                        <th abbr="File names" title="Sort alphabetically"><a href="?C=N;">Name</a></th>
-                        <th abbr="Last file edit" title="Sort by time of edit"><a href="?C=T;">Last Modified</a></th>
-                        <th class="text-right" abbr="Size of file" title="Sort by file size"><a href="?C=S;">Size</a></th>
+                        <!-- GET requests using href & sort order logic -->
+                        <th abbr="File names" title="Sort alphabetically">
+                            <a href="?C=N&O=<?php echo (isset($_GET['C'], $_GET['O']) && $_GET['C'] === 'N' && $_GET['O'] === 'A') ? 'D' : 'A'; ?>">Name</a>
+                        </th>
+
+                        <th abbr="Last file edit" title="Sort by time of edit">
+                            <a href="?C=T&O=<?php echo (isset($_GET['C'], $_GET['O']) && $_GET['C'] === 'T' && $_GET['O'] === 'A') ? 'D' : 'A'; ?>">Last Modified</a>
+                        </th>
+
+                        <th class="text-right" abbr="Size of file" title="Sort by file size">
+                            <a href="?C=S&O=<?php echo (isset($_GET['C'], $_GET['O']) && $_GET['C'] === 'S' && $_GET['O'] === 'A') ? 'D' : 'A'; ?>">Size</a>
+                        </th>
                     </tr>
 
                     <tr>
