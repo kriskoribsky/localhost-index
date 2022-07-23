@@ -1,13 +1,13 @@
 # **localhost-index**
-Multi-file project. This project is **continuation** (& main branch) of an original single-file project. It mimics the behaviour<br>
-of Apache's ```autoindex``` module, which creates index of directory file listings. 
+Multi-file project. This project is **continuation** (& main branch) of an original single-file project.<br>
+It mimics the behaviour of Apache's ```autoindex``` module, which creates index of directory file listings. 
  
 # Description
 This project could be utilized by web developers developing in local environment (```localhost/```) to beautify default indexing.
 
 ## Features
 - Eye-compelling minimalist design, good-looking on **mobile devices** too
-- Custom icons for all major file extensions (e.g. ```.js, .php, .css, .html```, ...)
+- Custom icons for all major file extensions (e.g. ```.js, .php, .css, .html```)
 - Display of current ```system path``` & ```open in explorer``` button
 - Sorting files according to ```file-size```, ```name``` and ```edit date```
 - Quote viewer to motivate you
