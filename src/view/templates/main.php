@@ -1,9 +1,3 @@
-<?php 
-
-
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,10 +8,10 @@
 
     <meta name="description" content="Simple index page replacing default server's indexing.">
 
-    <link rel="stylesheet" href="../css/normalize.min.css">
-    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" type="text/css" href="localhost-index/src/view/css/normalize.min.css?<?php echo time(); ?>">
+    <link rel="stylesheet" type="text/css" href="localhost-index/src/view/css/main.css?<?php echo time(); ?>">
 
-    <script defer src="../js/main.js"></script>
+    <script defer src="localhost-index/src/view/js/main.js?<?php echo time(); ?>"></script>
 
 </head>
 
@@ -33,7 +27,7 @@
 
             <p>
                 <code>
-                    <?php echo __DIR__; ?>
+                    <?php echo INDEX_DIR; ?>
                 </code>
             </p>
 
@@ -70,7 +64,12 @@
 
                     <?php foreach($files as $file): ?>
                         <tr class="file-rows">
-                            <td class="files text-left"><a href="<?php echo $file->name; ?>"><?php echo $file->icon . ' ' . $file->name; ?></a></td>
+                            <td class="files text-left">
+                                <a href="<?php echo $file->basename; ?>">
+                                    <img class=svg src="<?php echo $file->icon; ?>" alt="<?php echo $file->is_dir ? '[D]' : '[F]' ?>">
+                                    <?php echo $file->basename; ?>
+                                </a>
+                            </td>
                             <td class="text-left"><?php echo File::format_date($file->timestamp); ?></td>
 
                             <?php $formatted_bytes = File::format_bytes($file->size); $folder_size += $file->size ?>
@@ -95,7 +94,7 @@
                         </td>
                         <td class="text-right"><?php echo implode(' ', File::format_bytes($folder_size)); ?></td>
                         <td class="text-right" title="Open folder in explorer">
-                            <form name="open-explorer-form" action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
+                            <form name="open-explorer-form" action="<?php echo ROOT_PATH . '\src\controllers\open_in_explorer.php' ?>" method="post">
                                 
                                 <input type="hidden" name="open_root" value="true">
                                 <a id="open-explorer" href="#">
@@ -113,9 +112,11 @@
         <footer>
 
             <blockquote class="container">
+                        
+                    <?php $q = get_random_quote(); ?>
 
-                    <p class="quote"><?php echo $random_quote; ?></p>
-                    <p class="author text-right"><strong><?php echo QUOTES[$random_quote]; ?></strong></p>
+                    <p class="quote"><?php echo $q['quote'] ?></p>
+                    <p class="author text-right"><strong><?php echo $q['author']; ?></strong></p>
 
             </blockquote>
 
