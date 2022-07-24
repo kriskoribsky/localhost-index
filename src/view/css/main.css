@@ -58,13 +58,19 @@ body {
     opacity: 0.6;
 }
 
-.files svg {
+.svg {
     max-width: 1.4em;
     max-height: 1.4em;
 
     position: relative;
     top: 0.32em;
 }
+ 
+/* for alt text */
+.files img {
+    color: var(--light-grey-text-clr);   
+}
+
 
 table {
     color: var(--dark-grey-text-clr);
