@@ -1,0 +1,73 @@
+# Automatic index generation is enabled with using Options +Indexes.
+Options +Indexes
+
+# .htaccess protection
+<Files ~ "^.*\.([Hh][Tt][Aa])">
+	Order allow,deny
+	Deny from all
+	Satisfy all
+</Files>
+
+<IfModule mod_autoindex.c>
+    # options
+    IndexOptions FancyIndexing FoldersFirst HTMLTable IconsAreLinks IgnoreCase VersionSort 
+    IndexOptions NameWidth=*
+    IndexOptions SuppressDescription SuppressHTMLPreamble UseOldDateFormat 
+
+    IndexOrderDefault Ascending Name
+
+    # css
+    # IndexStyleSheet /localhost-index/css/main.css
+
+    # file that will be appended before directory indexes
+    HeaderName /localhost-index/header.html
+
+    # file that will be appended after directory indexes
+    ReadmeName /localhost-index/footer.html
+
+    # FILES TO IGNORE
+    IndexIgnoreReset ON
+    IndexIgnore localhost-index .git
+
+
+   
+
+    DefaultIcon /localhost-index/assets/icons/default_file.svg
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</IfModule>
