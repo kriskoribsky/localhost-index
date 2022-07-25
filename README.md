@@ -1,6 +1,7 @@
 # **localhost-index**
-Multi-file project. This project is **continuation** (& main branch) of an original single-file project.<br>
-It mimics the behaviour of Apache's ```autoindex``` module, which creates index of directory file listings. 
+Multi-file project. This project is **continuation** (& secondary branch) of an original single-file project.<br>
+It mimics the behaviour of Apache's ```autoindex``` module, which creates index of directory file listings, <br>
+but instead of using apache/nginx server generated index page, it uses its own .php control file.
  
 # Description
 This project could be utilized by web developers developing in local environment (```localhost/```) to beautify default indexing.
