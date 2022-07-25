@@ -3,3 +3,4 @@ Options +FollowSymLinks
 RewriteEngine on
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^(.*)$ /localhost-index/index.php?path=$1 [L]
+DirectoryIndex localhost-index/index.php
