@@ -1,4 +1,4 @@
-(function() {
+(() => {
 
     // fetch json data helper function
     async function fetchJSON(url) {
@@ -69,7 +69,7 @@
         openExplorerCell.querySelector('a').addEventListener('click', function(event) {
                 event.preventDefault()
     
-                fetch('/localhost-index/controllers/open_root.php?p=' + window.location.pathname)
+                fetch('/localhost-index/controllers/open_root.php?p=' + window.location.pathname);
         });
     }());
 
@@ -80,13 +80,13 @@
                 if (keyword) {
                     if (element.textContent.toLowerCase().indexOf(keyword.toLowerCase()) === 0) {
                         // show matched row
-                        element.parentElement.classList.remove('hidden')
+                        element.parentElement.classList.remove('hidden');
                     } else {
                         // hide unmatched row
-                        element.parentElement.classList.add('hidden')
+                        element.parentElement.classList.add('hidden');
                     }     
                 } else {
-                    element.parentElement.classList.remove('hidden')
+                    element.parentElement.classList.remove('hidden');
                 }
             });
     }
@@ -94,11 +94,25 @@
     const search = document.getElementById('search-keywords');
 
     search.addEventListener('input', (field) => {
-        filter(field.target.value)
+        filter(field.target.value);
     })
 
     // hide blank th icon
     document.querySelector('th.indexcolicon').remove();
-    document.querySelector('th.indexcolname').setAttribute('colspan', '2');
+
+    // move icons to same td as filenames & delete their columns
+    document.querySelectorAll('.even, .odd').forEach(row => {
+        const iconTd = row.firstChild;
+        const filenameA = row.children[1].firstChild;
+
+        // move icon to filenames
+        filenameA.prepend(iconTd.firstChild)
+
+        // delete iconTd afterwards
+        iconTd.remove();
+    })
+    
+    
+
 
 })();

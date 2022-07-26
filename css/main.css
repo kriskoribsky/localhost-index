@@ -109,25 +109,22 @@ img {
     color: var(--primary-text-clr);
 }
 
-.indexcolicon {
-    width: 1%;
-}
-
-.indexcolicon img {
+.indexcolname img {
     /* for alt text */
     color: var(--light-grey-text-clr);
 
     position: relative;
-    top: 0.12em;
+    top: 0.29em;
 }
 
-td.indexcolname a:hover, td.indexcolicon a:hover {
+/* dynamically added class to icons with js */
+td.indexcolname:hover {
     opacity: 0.6;
 }
 
-/* minimize gap between icons and filenames */
-td.indexcolicon {
-    padding-right: 0 !important;
+/* create space between icon and filename */
+.indexcolname img {
+    margin-right: 0.2em;
 }
 
 .indexcolsize {
