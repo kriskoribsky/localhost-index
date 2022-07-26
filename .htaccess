@@ -32,43 +32,69 @@ Options +Indexes
 
    
 
-    DefaultIcon /localhost-index/assets/icons/file-icons/default_file.svg
-    AddIcon /localhost-index/assets/icons/file-icons/default_folder.svg ^^DIRECTORY^^
+    DefaultIcon /localhost-index/assets/icons/file-icons/file-text.svg
+    AddIcon /localhost-index/assets/icons/file-icons/file-directory.svg ^^DIRECTORY^^
 
+    AddIcon /localhost-index/assets/icons/file-icons/back.svg ..
+    AddIcon /localhost-index/assets/icons/file-icons/github.svg .github
+    AddIcon /localhost-index/assets/icons/file-icons/nodejs.svg node_modules
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    AddIcon /localhost-index/assets/icons/file-icons/file-binary.svg .com .exe
+    AddIcon /localhost-index/assets/icons/file-icons/file-code.svg .c .h .mustache .rust .source .apache .yml .jade
+    AddIcon /localhost-index/assets/icons/file-icons/file-media.svg .png .jpg .jpeg .webp .gif .bmp .mp4 .webm .ogv .mov .ico
+    AddIcon /localhost-index/assets/icons/file-icons/file-pdf.svg .pdf
+    AddIcon /localhost-index/assets/icons/file-icons/file-text.svg .txt .srt README readme Procfile
+    AddIcon /localhost-index/assets/icons/file-icons/file-zip.svg .zip .z .gz .Z .tgz .tar.gz .tar .rar
+    AddIcon /localhost-index/assets/icons/file-icons/gear.svg .htaccess .env .env-dev .env-production .env-staging
+    AddIcon /localhost-index/assets/icons/file-icons/config.svg .conf .ini .cfg .prefs
+    AddIcon /localhost-index/assets/icons/file-icons/less.svg .less
+    AddIcon /localhost-index/assets/icons/file-icons/css.svg .css
+    AddIcon /localhost-index/assets/icons/file-icons/html.svg .html .htm
+    AddIcon /localhost-index/assets/icons/file-icons/coffee.svg .coffee
+    AddIcon /localhost-index/assets/icons/file-icons/java.svg .java
+    AddIcon /localhost-index/assets/icons/file-icons/markdown.svg .markdown .md
+    AddIcon /localhost-index/assets/icons/file-icons/eslint.svg *.eslintignore *.eslintrc.js *.eslintrc.json *.eslintrc *.eslintrc.yml
+    AddIcon /localhost-index/assets/icons/file-icons/webpack.svg webpack.config.js
+    AddIcon /localhost-index/assets/icons/file-icons/rollup.svg rollup.config.js
+    AddIcon /localhost-index/assets/icons/file-icons/postcss.svg postcss.config.js *.postcssrc *.postcssrc.json *.postcssrc.js *.postcssrc.yml
+    AddIcon /localhost-index/assets/icons/file-icons/grunt.svg gruntfile.js Gruntfile.js
+    AddIcon /localhost-index/assets/icons/file-icons/gulp.svg gulpfile.js Gulpfile.js
+    AddIcon /localhost-index/assets/icons/file-icons/js.svg .js
+    AddIcon /localhost-index/assets/icons/file-icons/composer.svg composer.json composer.lock composer.phar
+    AddIcon /localhost-index/assets/icons/file-icons/bower.svg bower.json
+    AddIcon /localhost-index/assets/icons/file-icons/npm.svg package.json package-lock.json
+    AddIcon /localhost-index/assets/icons/file-icons/settings.svg .json
+    AddIcon /localhost-index/assets/icons/file-icons/mustache.svg .mustache
+    AddIcon /localhost-index/assets/icons/file-icons/php.svg .php
+    AddIcon /localhost-index/assets/icons/file-icons/python.svg .py
+    AddIcon /localhost-index/assets/icons/file-icons/ruby.svg .rb
+    AddIcon /localhost-index/assets/icons/file-icons/rust.svg .rust
+    AddIcon /localhost-index/assets/icons/file-icons/sass.svg .sass
+    AddIcon /localhost-index/assets/icons/file-icons/scss.svg .scss
+    AddIcon /localhost-index/assets/icons/file-icons/svg.svg .svg .svgx .eps
+    AddIcon /localhost-index/assets/icons/file-icons/xml.svg .xml
+    AddIcon /localhost-index/assets/icons/file-icons/typescript.svg .ts
+    AddIcon /localhost-index/assets/icons/file-icons/vue.svg .vue
+    AddIcon /localhost-index/assets/icons/file-icons/yarn.svg yarn.lock
+    AddIcon /localhost-index/assets/icons/file-icons/babel.svg *.babelrc
+    AddIcon /localhost-index/assets/icons/file-icons/git.svg *.gitignore *.gitattributes
+    AddIcon /localhost-index/assets/icons/file-icons/editor-config.svg .editorconfig
+    AddIcon /localhost-index/assets/icons/file-icons/shopify.svg .liquid
+    AddIcon /localhost-index/assets/icons/file-icons/nunjucks.svg .nunjucks
+    AddIcon /localhost-index/assets/icons/file-icons/pug.svg .pug
+    AddIcon /localhost-index/assets/icons/file-icons/adobe-photoshop.svg .psd
+    AddIcon /localhost-index/assets/icons/file-icons/adobe-illustrator.svg .ai
+    AddIcon /localhost-index/assets/icons/file-icons/stylus.svg .styl
+    AddIcon /localhost-index/assets/icons/file-icons/terminal.svg .sh .bash
+    AddIcon /localhost-index/assets/icons/file-icons/database.svg .sql .mysql .sqlite .dsql .db
+    AddIcon /localhost-index/assets/icons/file-icons/vagrant.svg vagrantfile Vagrantfile
+    AddIcon /localhost-index/assets/icons/file-icons/file-word.svg .doc .docx
+    AddIcon /localhost-index/assets/icons/file-icons/file-excel.svg .xls .xlsx
+    AddIcon /localhost-index/assets/icons/file-icons/yaml.svg .yml .yaml
+    AddIcon /localhost-index/assets/icons/file-icons/brainfuck.svg .b
+    AddIcon /localhost-index/assets/icons/file-icons/cobol.svg .cbl .cob .cpy
+    AddIcon /localhost-index/assets/icons/file-icons/docker.svg docker-compose.yml
+    AddIcon /localhost-index/assets/icons/file-icons/virtualbox.svg .ova .vbox
 
 
 </IfModule>
