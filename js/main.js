@@ -1,7 +1,5 @@
 (function() {
 
-    console.log('js running');
-
     // fetch json data helper function
     async function fetchJSON(url) {
         const req = new Request(url, {
@@ -100,7 +98,6 @@
     })
 
     // hide blank th icon
-    // console.log(document.querySelector('th.indexcolicon'));
     document.querySelector('th.indexcolicon').remove();
     document.querySelector('th.indexcolname').setAttribute('colspan', '2');
 
