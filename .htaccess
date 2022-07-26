@@ -10,7 +10,7 @@ Options +Indexes
 
 <IfModule mod_autoindex.c>
     # options
-    IndexOptions FancyIndexing FoldersFirst HTMLTable IconsAreLinks IgnoreCase VersionSort 
+    IndexOptions FancyIndexing FoldersFirst HTMLTable IgnoreCase VersionSort 
     IndexOptions NameWidth=*
     IndexOptions SuppressDescription SuppressHTMLPreamble UseOldDateFormat 
 
