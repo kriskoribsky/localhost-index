@@ -93,15 +93,15 @@
             });
     }
 
-
     const search = document.getElementById('search-keywords');
 
     search.addEventListener('input', (field) => {
         filter(field.target.value)
-
     })
 
-
-
+    // hide blank th icon
+    // console.log(document.querySelector('th.indexcolicon'));
+    document.querySelector('th.indexcolicon').remove();
+    document.querySelector('th.indexcolname').setAttribute('colspan', '2');
 
 })();
