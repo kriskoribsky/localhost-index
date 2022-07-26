@@ -17,7 +17,7 @@ Options +Indexes
     IndexOrderDefault Ascending Name
 
     # css
-    # IndexStyleSheet /localhost-index/css/main.css
+    IndexStyleSheet /localhost-index/css/main.css
 
     # file that will be appended before directory indexes
     HeaderName /localhost-index/header.html
@@ -32,7 +32,8 @@ Options +Indexes
 
    
 
-    DefaultIcon /localhost-index/assets/icons/default_file.svg
+    DefaultIcon /localhost-index/assets/icons/file-icons/default_file.svg
+    AddIcon /localhost-index/assets/icons/file-icons/default_folder.svg ^^DIRECTORY^^
 
 
 
