@@ -66,15 +66,42 @@
         const openExplorerCell = tFooterRow.insertCell();
         openExplorerCell.setAttribute('id', 'open-explorer');
         openExplorerCell.setAttribute('colspan', '2');
-        openExplorerCell.innerHTML = '<a title="Open in explorer" href="#"><img src="/localhost-index/assets/icons/open_in_explorer.svg"></a>';
+        openExplorerCell.innerHTML = '<a title="Open in explorer" href="#"><img src="/localhost-index/assets/icons/open-folder.svg" alt="open"></a>';
 
         openExplorerCell.querySelector('a').addEventListener('click', function(event) {
                 event.preventDefault()
     
                 fetch('/localhost-index/controllers/open_root.php?p=' + window.location.pathname)
         });
-
     }());
+
+    // search bar
+    function filter(keyword) {
+
+            document.querySelectorAll('td.indexcolname').forEach(element => {
+                if (keyword) {
+                    if (element.textContent.toLowerCase().indexOf(keyword.toLowerCase()) === 0) {
+                        // show matched row
+                        element.parentElement.classList.remove('hidden')
+                    } else {
+                        // hide unmatched row
+                        element.parentElement.classList.add('hidden')
+                    }     
+                } else {
+                    element.parentElement.classList.remove('hidden')
+                }
+            });
+    }
+
+
+    const search = document.getElementById('search-keywords');
+
+    search.addEventListener('input', (field) => {
+        filter(field.target.value)
+
+    })
+
+
 
 
 })();
