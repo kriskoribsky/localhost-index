@@ -1,3 +1,16 @@
+:root {
+    --primary-text-clr: #0C5959;
+    --secondary-text-clr: #2C6363;
+    --dark-grey-text-clr: #222222;
+    --light-grey-text-clr: #404040;
+
+    --tr-dark-shade-clr: #DCDCDC;
+    --tr-light-shade-clr: #F8F8F8;
+
+    --main-font-family: "Century Schoolbook", Verdana, Arial, sans-serif;
+    --monospace-font-family: monospace, "Courier New";
+}
+
 /* helper classes */
 html {
     box-sizing: border-box;
@@ -8,11 +21,47 @@ html {
 }
 
 body {
-    font-family: "Century Schoolbook", Verdana, Arial, sans-serif;
+    font-family: --main-font-family;
 
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: auto;
+
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
 }
+
+code {
+    font-family: var(--monospace-font-family);
+}
+
+/* table */
+#indexlist {
+    width: 100%;
+}
+
+.indexcolicon img {
+    width: 1.5em;
+    height: 1.5em;
+}
+
+#server-info {
+    text-align: left;
+}
+
+#open-explorer {
+    text-align: right;
+}
+
+#open-explorer img {
+    width: 1.5em;
+    height: 1.5em;
+}
+
+/* img {
+    width: 2em;
+    height: 2em;
+} */
 
 .container {
     margin: 0 auto;
@@ -31,15 +80,7 @@ body {
 }
 
 /* main styles */
-:root {
-    --primary-text-clr: #0C5959;
-    --secondary-text-clr: #2C6363;
-    --dark-grey-text-clr: #222222;
-    --light-grey-text-clr: #404040;
 
-    --tr-dark-shade-clr: #DCDCDC;
-    --tr-light-shade-clr: #F8F8F8;
-}
 
 .window {
     max-width: 640px;
