@@ -48,8 +48,8 @@ code {
 }
 
 img {
-    width: 1.5em;
-    height: 1.5em;
+    width: 1.3em;
+    height: 1.3em;
 }
 
 .hidden {
@@ -102,7 +102,7 @@ img {
 }
 
 #indexlist td {
-    padding: 0.2em;
+    padding: 0.22em;
 }
 
 .indexcolname a {
@@ -114,14 +114,20 @@ img {
 }
 
 .indexcolicon img {
-    /* width: 1.5em;
-    height: 1.5em; */
     /* for alt text */
     color: var(--light-grey-text-clr);
+
+    position: relative;
+    top: 0.12em;
 }
 
 td.indexcolname a:hover, td.indexcolicon a:hover {
     opacity: 0.6;
+}
+
+/* minimize gap between icons and filenames */
+td.indexcolicon {
+    padding-right: 0 !important;
 }
 
 .indexcolsize {
@@ -132,9 +138,9 @@ td.indexcolname a:hover, td.indexcolicon a:hover {
     background-color: var(--tr-light-shade-clr);
 }
 
-.odd {
+/* .odd {
     background-color: white;
-}
+} */
 
 #server-info {
     text-align: left;
@@ -144,37 +150,12 @@ td.indexcolname a:hover, td.indexcolicon a:hover {
     text-align: right;
 }
 
-/* #open-explorer img {
-    width: 1.5em;
-    height: 1.5em;
-} */
-
 .svg {
     max-width: 1.4em;
     max-height: 1.4em;
 
     position: relative;
     top: 0.32em;
-}
-
-/* table td {
-    padding: 0.2em;
-}
-
-table th {
-    text-align: left;
-}
-
-} */
-
-.file-rows:nth-child(2n+1) {
-    /* background-color: var(--tr-dark-shade-clr); */
-    background-color: var(--tr-light-shade-clr);
-}
-
-.file-rows:nth-child(2n) {
-    /* background-color: var(--tr-light-shade-clr); */
-    background-color: white;
 }
 
 tfoot {
