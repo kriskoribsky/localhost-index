@@ -15,15 +15,12 @@ This project could be utilized by web developers developing in local environment
 * Sort files according to ```file-size```, ```name``` or ```edit date```
 * Random motivational quotes
 
-
-# Visuals
-
-## Default localhost index with [FancyIndexing:](https://httpd.apache.org/docs/2.4/mod/mod_autoindex.html)
+#### Default localhost index
 ![localhost index with FancyIndexing](doc/img/old-index-clipped.png)
 
 <br>
 
-## **New** [localhost-index](https://github.com/kriskoribsky/localhost-index)
+#### **New** [localhost-index](https://github.com/kriskoribsky/localhost-index)
 ![new style of localhost index](doc/img/new-index-clipped.png)
 
 # Setup
@@ -74,4 +71,4 @@ You can find more information about these options on [autoindex - indexoptions d
 * File explorer design ispired by Mac's [Finder](https://en.wikipedia.org/wiki/Finder_(software))
 
 # Documentation
-* Main documentation source is [Apache's ```mod_autoindex``` module](https://httpd.apache.org/docs/2.4/mod/mod_autoindex.html)
+* [Main documentation source](https://httpd.apache.org/docs/2.4/mod/mod_autoindex.html)
