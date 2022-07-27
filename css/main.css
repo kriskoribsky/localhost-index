@@ -105,6 +105,10 @@ img {
     padding: 0.22em;
 }
 
+.indexcolname {
+    width: 68%;
+}
+
 .indexcolname a {
     color: var(--primary-text-clr);
 }
