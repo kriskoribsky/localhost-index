@@ -15,12 +15,12 @@ This project could be utilized by web developers developing in local environment
 * Sort files according to ```file-size```, ```name``` or ```edit date```
 * Random motivational quotes
 
-#### Default localhost index
+### Default localhost index
 ![localhost index with FancyIndexing](doc/img/old-index-clipped.png)
 
 <br>
 
-#### **New** [localhost-index](https://github.com/kriskoribsky/localhost-index)
+### **New** [localhost-index](https://github.com/kriskoribsky/localhost-index)
 ![new style of localhost index](doc/img/new-index-clipped.png)
 
 # Setup
