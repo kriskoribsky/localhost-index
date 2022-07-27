@@ -43,16 +43,11 @@ located inside Apache's main ```httpd.conf``` configuration file.
       ```
 * When making changes to ```httpd.conf``` file, you should restart Apache ```sudo apachectl restart```.
 
-<br>
-
 ### After that:
 
 1. Clone or download the files.
 2. Add them to your ```DocumentRoot``` directory.
 3. Copy the ```.htaccess``` file up one directory.
-
-<br>
-
 
 ### Finally, your ```DocumentRoot``` directory should look like this:
 ![DocumentRoot directory containing .htaccess & localhost-index files](doc/img/root-dir-example.png)
