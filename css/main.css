@@ -3,6 +3,7 @@
     --secondary-text-clr: #2C6363;
     --dark-grey-text-clr: #222222;
     --light-grey-text-clr: #404040;
+    --red-text-clr: #8b0000;
 
     --tr-dark-shade-clr: #DCDCDC;
     --tr-light-shade-clr: #F8F8F8;
@@ -58,6 +59,12 @@ img {
 
 .controls {
     margin: 3em auto;
+}
+
+#index-path .path-delimiter {
+    font-weight: bold;
+    color: var(--red-text-clr);
+    margin: 0 0.1em;
 }
 
 #search-box {
