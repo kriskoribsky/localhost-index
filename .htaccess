@@ -1,6 +1,9 @@
 # Automatic index generation is enabled with using Options +Indexes.
 Options +Indexes
 
+AddType image/svg+xml svg svgz
+AddEncoding gzip svgz
+
 # .htaccess protection
 <Files ~ "^.*\.([Hh][Tt][Aa])">
 	Order allow,deny
@@ -29,9 +32,7 @@ Options +Indexes
     IndexIgnoreReset ON
     IndexIgnore localhost-index .git
 
-
-   
-
+    # icons
     DefaultIcon /localhost-index/assets/icons/file-icons/file-text.svg
     AddIcon /localhost-index/assets/icons/file-icons/file-directory.svg ^^DIRECTORY^^
 
@@ -95,6 +96,5 @@ Options +Indexes
     AddIcon /localhost-index/assets/icons/file-icons/cobol.svg .cbl .cob .cpy
     AddIcon /localhost-index/assets/icons/file-icons/docker.svg docker-compose.yml
     AddIcon /localhost-index/assets/icons/file-icons/virtualbox.svg .ova .vbox
-
 
 </IfModule>
