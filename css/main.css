@@ -185,10 +185,6 @@ blockquote {
     content: '"';
 }
 
-#author::before {
-    content: '― ';
-}
-
 .author-p {
     text-align: right;
 }
